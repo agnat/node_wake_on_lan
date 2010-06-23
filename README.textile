@@ -1,0 +1,4 @@
+h1. README
+
+A simple wake on lan packet generator for node.js
+
