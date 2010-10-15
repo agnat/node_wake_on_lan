@@ -1,5 +1,5 @@
-var sys = require('sys'),
-    Buffer = require('buffer').Buffer;
+var dgram = require('dgram')
+  , Buffer = require('buffer').Buffer;
 
 exports.createMagicPacket = function(mac) {
   var num_mac_octets = 6;
@@ -25,3 +25,44 @@ exports.createMagicPacket = function(mac) {
   }
   return buffer;
 };
+
+exports.wake = function(mac, opts, callback) {
+  if (typeof opts === 'function') {
+    callback = opts;
+    opts = undefined;
+  }
+
+  opts = opts || {};
+
+  var address     = opts['address']     || '255.255.255.255';
+  var num_packets = opts['num_packets'] || 3;
+  var interval    = opts['interval']    || 100;
+  var port        = opts['port']        || 9;
+
+  var magic_packet = exports.createMagicPacket(mac);
+  var socket = dgram.createSocket('udp4');
+  socket.setBroadcast(true);
+  var i = 0;
+  var timer_id;
+  var handler = function(error) {
+    if (error || i === num_packets) {
+      socket.close();
+      if (timer_id) {
+        clearTimeout(timer_id);
+      }
+      if (callback) {
+        callback(error);
+      }
+    }
+  }
+  var sendWoL = function() {
+    i += 1;
+    socket.send(magic_packet, 0, magic_packet.length, port, address, handler);
+    if (i < num_packets) {
+      timer_id = setTimeout(sendWoL, interval);
+    } else {
+      timer_id = undefined;
+    }
+  }
+  sendWoL();
+}
