@@ -1,4 +1,50 @@
-h1. README
+h1. Wake-on-LAN utilities for node.js
 
-A simple wake on lan packet generator for node.js
+h2. Installation
+
+bc. npm install wake_on_lan
+
+h2. Synopsis
+
+To wake a machine with a given mac address do:
+
+bc.. var wol = require('wake_on_lan');
+wol.wake('20:DE:20:DE:20:DE');
+
+wol.wake('20:DE:20:DE:20:DE', function(error) {
+  if (error) {
+    // handle error
+  } else {
+    // done sending packets
+  }
+});
+
+h2. Reference
+
+pre. wake(mac, [options, callback])
+
+Send a sequence of Wake-on-LAN magic packets to the given MAC address. The callback is called when all packets have been sent or an error occurs. The _options_ object may have the following keys:
+
+_address_: the destination address (default: 255.255.255.255)
+
+_num_packets_: number of packets to send (default: 3)
+
+_interval_: the interval between packets (default: 100ms)
+
+_port_: the port to send to (default: 9)
+
+
+pre. createMagicPacket(mac)
+
+Returns a buffer with a magic packet for the given MAC address.
+
+h2. License (MIT)
+
+Copyright (c) 2010 David Siegel
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
