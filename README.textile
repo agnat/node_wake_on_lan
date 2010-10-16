@@ -9,6 +9,7 @@ h2. Synopsis
 To wake a machine with a given mac address do:
 
 bc.. var wol = require('wake_on_lan');
+
 wol.wake('20:DE:20:DE:20:DE');
 
 wol.wake('20:DE:20:DE:20:DE', function(error) {
