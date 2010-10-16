@@ -1,5 +1,6 @@
-var dgram = require('dgram')
-  , Buffer = require('buffer').Buffer;
+var dgram  = require('dgram')
+  , Buffer = require('buffer').Buffer
+  ;
 
 exports.createMagicPacket = function(mac) {
   var num_mac_octets = 6;
