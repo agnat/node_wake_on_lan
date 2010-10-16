@@ -1,6 +1,6 @@
 { "name" : "wake_on_lan"
 , "version" : "0.0.1"
-, "description" : "generate and send Wake-on-LAN packets"
+, "description" : "Generate and send Wake-on-LAN magic packets"
 , "author": "David Siegel <david@artcom.de>"
 , "contributors": []
 , "main": "./wake_on_lan"
