@@ -49,6 +49,10 @@ pre. createMagicPacket(mac)
 
 Returns a buffer with a magic packet for the given MAC address.
 
+h2. Contributors
+
+* Jann Horn ("@thejh":http://github.com/thejh)
+
 h2. License (MIT)
 
 Copyright (c) 2010 David Siegel
