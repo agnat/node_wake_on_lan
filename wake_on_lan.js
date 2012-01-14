@@ -7,7 +7,8 @@ exports.createMagicPacket = function(mac) {
   if (mac.length == 2 * num_mac_octets + (num_mac_octets - 1)) {
     var sep = mac[2];
     mac = mac.replace(new RegExp(sep, 'g'), '');
-  } else if (mac.length != 2 * num_mac_octets) {
+  }
+  if (mac.length != 2 * num_mac_octets || mac.match(/[^a-fA-F0-9]/)) {
     throw new Error("malformed MAC address '" + mac + "'");
   }
 
