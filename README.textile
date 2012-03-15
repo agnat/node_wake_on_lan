@@ -34,7 +34,7 @@ h3. Functions
 
 pre. wake(mac, [options, callback])
 
-Send a sequence of Wake-on-LAN magic packets to the given MAC address. The callback is called when all packets have been sent or an error occurs. The _options_ object may have the following keys:
+Send a sequence of Wake-on-LAN magic packets to the given MAC address. The callback is called when all packets have been sent or an error occurs. The _options_ object may have the following properties:
 
 _address_: the destination address (default: 255.255.255.255)
 
@@ -43,7 +43,6 @@ _num_packets_: number of packets to send (default: 3)
 _interval_: the interval between packets (default: 100ms)
 
 _port_: the port to send to (default: 9)
-
 
 pre. createMagicPacket(mac)
 
