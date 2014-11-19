@@ -1,5 +1,5 @@
 { "name" : "wake_on_lan"
-, "version" : "0.0.3"
+, "version" : "0.0.4"
 , "description" : "generate and send Wake-on-LAN magic packets"
 , "main": "./wake_on_lan.js"
 , "licenses": [

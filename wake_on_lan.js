@@ -51,7 +51,11 @@ exports.wake = function(mac, opts, callback) {
 
   function post_write(error) {
     if (error || i === num_packets) {
-      socket.close();
+      try {
+        socket.close();
+      } catch (ex) {
+        error = error || ex;
+      }
       if (timer_id) {
         clearTimeout(timer_id);
       }
@@ -60,6 +64,9 @@ exports.wake = function(mac, opts, callback) {
       }
     }
   }
+  
+  socket.on('error', post_write);
+
   function sendWoL() {
     i += 1;
     socket.send(magic_packet, 0, magic_packet.length, port, address, post_write);
@@ -71,7 +78,7 @@ exports.wake = function(mac, opts, callback) {
   }
   socket.once('listening', function() {
     socket.setBroadcast(true)
-  })
+  });
   sendWoL();
 }
 
