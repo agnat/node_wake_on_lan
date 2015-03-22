@@ -44,7 +44,7 @@ exports.wake = function(mac, opts, callback) {
     , interval    = opts['interval']    || 100
     , port        = opts['port']        || 9
 	, srcAddress  = opts['srcAddress']  || '0.0.0.0'
-	, srcPort     = opts['srcPort']     || Math.floor(Math.random() * (60000 - 10000 + 1) + 10000) // random src port
+	, srcPort     = opts['srcPort']     || 0 // 0 = random src port selected by system (not in nodejs documentation)
     , magic_packet = exports.createMagicPacket(mac)
     , socket = dgram.createSocket(net.isIPv6(address) ? 'udp6' : 'udp4')
     , i = 0
