@@ -43,6 +43,7 @@ exports.wake = function(mac, opts, callback) {
     , num_packets = opts['num_packets'] || 3
     , interval    = opts['interval']    || 100
     , port        = opts['port']        || 9
+    , srcAddress  = opts['srcAddress']  || '0.0.0.0'
     , magic_packet = exports.createMagicPacket(mac)
     , socket = dgram.createSocket(net.isIPv6(address) ? 'udp6' : 'udp4')
     , i = 0
@@ -79,6 +80,9 @@ exports.wake = function(mac, opts, callback) {
   socket.once('listening', function() {
     socket.setBroadcast(true)
   });
-  sendWoL();
+  
+  socket.bind(0, srcAddress, function() {
+      sendWoL(); 
+  });
 }
 

@@ -1,5 +1,5 @@
 { "name" : "wake_on_lan"
-, "version" : "0.0.4"
+, "version" : "0.0.5"
 , "description" : "generate and send Wake-on-LAN magic packets"
 , "main": "./wake_on_lan.js"
 , "licenses": [
@@ -21,6 +21,9 @@
 , "contributors": [
     { "name":   "Jann Horn"
     , "github": "thejh"
+    }, 
+	{ "name":   "Markus Sattler"
+    , "github": "Links2004"
     }
   ]
 }
