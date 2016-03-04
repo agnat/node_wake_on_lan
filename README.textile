@@ -10,11 +10,15 @@ h2. Usage
 bc.. wake [options] MAC
 
 Options
--h | --help          Show help
--a | --address       Broadcast address
--n | --num_packets   Number of packets to send
--i | --interval      Interval between each packet
--p | --port          UDP port of the target destination
+  -h | --help          Show help
+  -a | --address       Broadcast address
+  -n | --num_packets   Number of packets to send
+  -i | --interval      Interval between each packet
+  -p | --port          UDP port of the target destination
+
+Examples
+  wake -a 192.168.1.255 20:DE:20:DE:20:DE
+  wake -a 192.168.1.255 -p 9 20:DE:20:DE:20:DE
 
 h2. Synopsis
 
