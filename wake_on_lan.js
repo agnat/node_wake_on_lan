@@ -68,7 +68,7 @@ exports.wake = function(mac, opts, callback) {
       }
     }
   }
-  
+
   socket.on('error', post_write);
 
   function sendWoL() {
@@ -85,4 +85,3 @@ exports.wake = function(mac, opts, callback) {
   });
   sendWoL();
 }
-

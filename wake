@@ -2,18 +2,33 @@
 
 var wol  = require('./wake_on_lan')
   , path = require('path')
+  , argv = require('minimist')(process.argv.slice(2));
   ;
 
 process.title = path.basename(__filename);
 
-if (process.argv.length != 3) {
-  console.log('Usage: ' + process.title + " MAC");
+if (argv.h || argv.help) {
+  showHelp();
+  process.exit(0);
+}
+
+if (!argv['_'].length) {
+  showHelp();
   process.exit(1);
 }
 
-var mac = process.argv[2];
+var mac = argv['_'][0];
 
-wol.wake(mac, function(error) {
+var options = {};
+(argv.a || argv.address) && (options.address = argv.a || argv.address);
+(argv.n || argv.num_packets) && (options.num_packets = argv.n || argv.num_packets);
+(argv.i || argv.interval) && (options.interval = argv.i || argv.interval);
+(argv.p || argv.port) && (options.port = argv.p || argv.port);
+
+console.log('sending magic packet to %s', mac);
+console.log('options %j ', options);
+
+wol.wake(mac, options, function(error) {
   if (error) {
     console.log("kaputt: " + error);
   } else {
@@ -21,3 +36,17 @@ wol.wake(mac, function(error) {
   }
 });
 
+
+function showHelp () {
+  console.log('Usage: ' + process.title + ' [options] MAC');
+  console.log('\nOptions:');
+  console.log('-a | --address       Broadcast address, ipv4/ipv6, defaults to 255.255.255.255');
+  console.log('-n | --num_packets   Number of packets to send, defaults to 3');
+  console.log('-i | --interval      Interval between each packet, defaults to 100');
+  console.log('-p | --port          UDP port of the target destination, defaults to 9');
+  console.log('-h | --help          Show help');
+  console.log('\nExamples:');
+  console.log('wake 20:DE:20:DE:20:DE');
+  console.log('wake -a 192.168.1.255 20-DE-20-DE-20-DE');
+  console.log('wake --num_packets 10 --interval 50 -p 9 20DE20DE20DE');
+}

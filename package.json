@@ -12,6 +12,9 @@
   "bugs": {
     "url": "http://github.com/agnat/node_wake_on_lan/issues"
   },
+  "bin": {
+    "wake": "./wake"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/agnat/node_wake_on_lan.git"
@@ -25,6 +28,13 @@
     {
       "name": "Jann Horn",
       "github": "thejh"
+    },
+    {
+      "email": "mhhcbon@gmail.com",
+      "github": "mh-cbon"
     }
-  ]
+  ],
+  "dependencies": {
+    "minimist": "^1.2.0"
+  }
 }

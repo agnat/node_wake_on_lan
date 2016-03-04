@@ -2,8 +2,9 @@
 
 ## Installation
 
-````
-npm install wake_on_lan
+````bash
+npm install wake_on_lan --save  # use the library
+npm install wake_on_lan -g      # optional global wake utility 
 ````
 
 ## Synopsis
@@ -26,7 +27,7 @@ wol.wake('20:DE:20:DE:20:DE', function(error) {
 var magic_packet = wol.createMagicPacket('20:DE:20:DE:20:DE');
 ````
 
-See [windows notes](#windows-notes).
+See [windows notes](#windows-notes) and the [wake utility](#the-wake-utility).
 
 ## Reference
 
@@ -61,6 +62,30 @@ createMagicPacket(mac)
 
 Returns a buffer with a magic packet for the given MAC address.
 
+## The wake utility
+
+````
+wake [options] MAC
+````
+
+### Options
+
+| Option | Short | Description | Default |
+| --- | --- | --- | --- |
+| --address | -a | Broadcast address, ipv4 or ipv6 | 255.255.255.255 |
+| --num_packets | -n | Number of packets to send | 3 |
+| --interval | -i | Interval between each packet | 100 |
+| --port | -p | UDP port of the target destination | 9 |
+| --help | -h | Show help ||
+
+### Examples
+
+````bash
+wake 20:DE:20:DE:20:DE
+wake -a 192.168.1.255 20-DE-20-DE-20-DE
+wake --num_packets 10 --interval 50 -p 9 20DE20DE20DE
+````
+
 ## Windows Notes
 
 Because windows routes global broadcasts differently from unix systems, it is necessary to specify a broadcast address manually, e.g:
@@ -74,6 +99,7 @@ Use [`os.networkInterfaces()`](https://nodejs.org/api/os.html#os_os_networkinter
 ## Contributors
 
 * Jann Horn [@thejh](http://github.com/thejh)
+* mh-cbon [@mh-cbon](http://github.com/mh-cbon)
 
 ## License (MIT)
 
@@ -84,4 +110,3 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
