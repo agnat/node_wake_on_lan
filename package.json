@@ -8,7 +8,7 @@
     }
   ]
 , "bugs": { "url": "http://github.com/agnat/node_wake_on_lan/issues" }
-, "bin": { "wol": "./wake" }
+, "bin": { "wake": "./wake" }
 , "repository":
   { "type": "git"
   , "url":  "git://github.com/agnat/node_wake_on_lan.git"
