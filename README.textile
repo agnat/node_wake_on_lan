@@ -2,8 +2,8 @@ h1. Wake-on-LAN utilities for node.js
 
 h2. Installation
 
-bc. npm install wake_on_lan --save
-bc. npm install wake_on_lan -g
+bc.. npm install wake_on_lan --save
+npm install wake_on_lan -g
 
 h2. Usage
 
