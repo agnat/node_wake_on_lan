@@ -1,27 +1,40 @@
-{ "name" : "wake_on_lan"
-, "version" : "0.0.4"
-, "description" : "generate and send Wake-on-LAN magic packets"
-, "main": "./wake_on_lan.js"
-, "licenses": [
-    { "type": "MIT"
-    , "url": "http://github.com/agnat/node_wake_on_lan/raw/master/LICENSE"
+{
+  "name": "wake_on_lan",
+  "version": "0.0.4",
+  "description": "generate and send Wake-on-LAN magic packets",
+  "main": "./wake_on_lan.js",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/agnat/node_wake_on_lan/raw/master/LICENSE"
     }
-  ]
-, "bugs": { "url": "http://github.com/agnat/node_wake_on_lan/issues" }
-, "repository":
-  { "type": "git"
-  , "url":  "git://github.com/agnat/node_wake_on_lan.git"
-  }
-, "author": {
-    "name":   "David Siegel"
-  , "email":  "david@artcom.de"
-  , "github": "agnat"
-  }
-  
-, "contributors": [
-    { "name":   "Jann Horn"
-    , "github": "thejh"
+  ],
+  "bugs": {
+    "url": "http://github.com/agnat/node_wake_on_lan/issues"
+  },
+  "bin": {
+    "wake": "./wake"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/agnat/node_wake_on_lan.git"
+  },
+  "author": {
+    "name": "David Siegel",
+    "email": "david@artcom.de",
+    "github": "agnat"
+  },
+  "contributors": [
+    {
+      "name": "Jann Horn",
+      "github": "thejh"
+    },
+    {
+      "email": "mhhcbon@gmail.com",
+      "github": "mh-cbon"
     }
-  ]
+  ],
+  "dependencies": {
+    "minimist": "^1.2.0"
+  }
 }
-
