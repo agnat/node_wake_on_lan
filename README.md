@@ -61,7 +61,7 @@ Returns a buffer with a magic packet for the given MAC address.
 
 ## Contributors
 
-* Jann Horn @thejh
+* Jann Horn [@thejh](http://github.com/thejh)
 
 ## License (MIT)
 
