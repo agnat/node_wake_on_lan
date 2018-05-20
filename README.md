@@ -40,7 +40,7 @@ MAC addresses are strings and may use any separator or no separator at all:
 
 ````
 wake(mac, [options, callback])
-```
+````
 
 Send a sequence of Wake-on-LAN magic packets to the given MAC address. The callback is called when all packets have been sent or an error occurs. The _options_ object may have the following properties:
 
