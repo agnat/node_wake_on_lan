@@ -6,7 +6,7 @@ var dgram  = require('dgram')
 var mac_bytes = 6;
 
 exports.createMagicPacket = function(mac) {
-  var mac_buffer = new Buffer(mac_bytes)
+  var mac_buffer = new Buffer.alloc(mac_bytes)
     , i
     ;
   if (mac.length == 2 * mac_bytes + (mac_bytes - 1)) {
@@ -21,7 +21,7 @@ exports.createMagicPacket = function(mac) {
   }
 
   var num_macs = 16
-    , buffer   = new Buffer((1 + num_macs) * mac_bytes);
+    , buffer   = new Buffer.alloc((1 + num_macs) * mac_bytes);
   for (i = 0; i < mac_bytes; ++i) {
     buffer[i] = 0xff;
   }
