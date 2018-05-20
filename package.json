@@ -3,12 +3,7 @@
   "version": "0.0.5",
   "description": "generate and send Wake-on-LAN magic packets",
   "main": "./wake_on_lan.js",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://github.com/agnat/node_wake_on_lan/raw/master/LICENSE"
-    }
-  ],
+  "license": "MIT",
   "bugs": {
     "url": "http://github.com/agnat/node_wake_on_lan/issues"
   },
