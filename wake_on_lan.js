@@ -3,10 +3,14 @@ var dgram  = require('dgram')
   , Buffer = require('buffer').Buffer
   ;
 
+var allocBuffer = Buffer.alloc ? 
+  function allocBuffer(s) { return Buffer.alloc(s) } :
+  function allocBuffer(s) { return new Buffer(s) }
+
 var mac_bytes = 6;
 
 exports.createMagicPacket = function(mac) {
-  var mac_buffer = new Buffer.alloc(mac_bytes)
+  var mac_buffer = allocBuffer(mac_bytes)
     , i
     ;
   if (mac.length == 2 * mac_bytes + (mac_bytes - 1)) {
@@ -21,7 +25,7 @@ exports.createMagicPacket = function(mac) {
   }
 
   var num_macs = 16
-    , buffer   = new Buffer.alloc((1 + num_macs) * mac_bytes);
+    , buffer   = allocBuffer((1 + num_macs) * mac_bytes);
   for (i = 0; i < mac_bytes; ++i) {
     buffer[i] = 0xff;
   }
