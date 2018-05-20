@@ -26,6 +26,8 @@ wol.wake('20:DE:20:DE:20:DE', function(error) {
 var magic_packet = wol.createMagicPacket('20:DE:20:DE:20:DE');
 ````
 
+See [windows notes](#windows-notes).
+
 ## Reference
 
 MAC addresses are strings and may use any separator or no separator at all:
@@ -58,6 +60,16 @@ createMagicPacket(mac)
 ````
 
 Returns a buffer with a magic packet for the given MAC address.
+
+## Windows Notes
+
+Because windows routes global broadcasts differently from unix systems, it is necessary to specify a broadcast address manually, e.g:
+
+````
+wol.wake(someMac, { address: "192.168.2.255" }, wakeCallback);
+````
+
+Use [`os.networkInterfaces()`](https://nodejs.org/api/os.html#os_os_networkinterfaces) to calculate the broadcast address dynamically. See [@mwittig's comment](https://github.com/agnat/node_wake_on_lan/issues/4#issuecomment-156404241) for further information.
 
 ## Contributors
 
