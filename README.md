@@ -1,14 +1,17 @@
-h1. Wake-on-LAN utilities for node.js
+# Wake-on-LAN utilities for node.js
 
-h2. Installation
+## Installation
 
-bc. npm install wake_on_lan
+````
+npm install wake_on_lan
+````
 
-h2. Synopsis
+## Synopsis
 
 To wake a machine with a given mac address do:
 
-bc.. var wol = require('wake_on_lan');
+````js
+var wol = require('wake_on_lan');
 
 wol.wake('20:DE:20:DE:20:DE');
 
@@ -21,38 +24,46 @@ wol.wake('20:DE:20:DE:20:DE', function(error) {
 });
 
 var magic_packet = wol.createMagicPacket('20:DE:20:DE:20:DE');
+````
 
-h2. Reference
+## Reference
 
 MAC addresses are strings and may use any separator or no separator at all:
 
-pre. '20:DE:20:DE:20:DE'
+````js
+'20:DE:20:DE:20:DE'
 '20-DE-20-DE-20-DE'
 '20DE20DE20DE'
+````
 
-h3. Functions
+### Function wake()
 
-pre. wake(mac, [options, callback])
+````
+wake(mac, [options, callback])
+```
 
 Send a sequence of Wake-on-LAN magic packets to the given MAC address. The callback is called when all packets have been sent or an error occurs. The _options_ object may have the following properties:
 
-_address_: the destination address (default: 255.255.255.255)
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| `address` | The destination address | String | 255.255.255.255 |
+| `num_packets` | The number of packets to send | Number | 3 |
+| `interval` | The interval between packets in milliseconds | Number | 100 |
+| `port` | The destination port to send to | Number | 9 |
 
-_num_packets_: number of packets to send (default: 3)
+### Function createMagicPacket()
 
-_interval_: the interval between packets (default: 100ms)
-
-_port_: the port to send to (default: 9)
-
-pre. createMagicPacket(mac)
+````
+createMagicPacket(mac)
+````
 
 Returns a buffer with a magic packet for the given MAC address.
 
-h2. Contributors
+## Contributors
 
 * Jann Horn ("@thejh":http://github.com/thejh)
 
-h2. License (MIT)
+## License (MIT)
 
 Copyright (c) 2010 David Siegel
 
